@@ -1,0 +1,35 @@
+﻿body {
+}
+p {
+    display: inline;
+}
+#Summa {
+    display:inline;
+}
+#Sendbutton {
+    display:block;
+    margin-top:25px;
+}
+h2 {
+    font-size:1.5em;
+    margin-bottom:2px;
+}
+#kvitto {
+    margin-top:25px;
+    text-align:center;
+    width:300px;
+    height:400px;
+    background:#f5f5f5;
+    border:1px solid #000;
+    font-style:italic;
+
+}
+.dotted {
+    
+    margin:0 auto;
+    margin-top:15px;
+    height:150px;
+    width:90%;
+    border-top:1px dotted #000;
+    border-bottom:1px dotted #000;
+}
