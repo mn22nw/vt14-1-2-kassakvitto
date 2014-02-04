@@ -19,18 +19,30 @@ namespace kassakvitto
         {
             if (IsValid)
             {
+                try
+                {
+                    var sum = double.Parse(Summa.Text);
 
-                var sum = double.Parse(Summa.Text);
+                    var test = new Receipt(sum);
 
-                var test = new Receipt(sum);
+                    test.Calculate(sum); 
 
-                test.Calculate(sum); //kommer baraåt om de inte är static!
-                
-                Outputkvitto.Visible =true;
-                Totalt.Text = String.Format("{0,10}{1,10:c}", "Totalt:", test.Subtotal);
-                Rabattsats.Text = String.Format("{0,10}{1,10}%", "Rabattsats:", test.DiscountRate*100);
-                Rabatt.Text += String.Format("{0,10}{1,10:c}", "Rabatt:", test.MoneyOff);
-                Slutsumma.Text += String.Format("{0,10}{1,10:c}", "Att betala:", (sum - test.MoneyOff));
+                    Outputkvitto.Visible = true;
+                    Totalt.Text = String.Format("{0,10}{1,10:c}", "Totalt: ", test.Subtotal);
+                    Rabattsats.Text = String.Format("{0,10}{1,10}%", "Rabattsats: ", test.DiscountRate * 100);
+                    Rabatt.Text += String.Format("{0,10}{1,10:c}", "Rabatt: ", test.MoneyOff);
+                    Slutsumma.Text += String.Format("{0,10}{1,10:c}", "Att betala: ", (sum - test.MoneyOff));
+
+                }
+
+                catch(Exception ex)
+                {
+                    var error = new CustomValidator
+                    {
+                        IsValid = false,
+                        ErrorMessage = ex.Message 
+                    };
+                }
             }
         }
     }

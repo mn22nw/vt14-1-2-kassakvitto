@@ -32,6 +32,8 @@
                    <asp:Label ID="Rabatt" runat="server" Text=""></asp:Label>  
                    <asp:Label ID="Slutsumma" runat="server" Text=""></asp:Label>  
                </div>
+                <p>ORG. NR 20215452100120</p>
+                <p>VÄLKOMMEN ÅTER</p>
             </div>
         </asp:PlaceHolder>
     </div>
