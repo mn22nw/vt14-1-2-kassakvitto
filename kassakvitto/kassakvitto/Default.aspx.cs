@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using kassakvitto.Model; 
 
 namespace kassakvitto
 {
@@ -18,34 +19,18 @@ namespace kassakvitto
         {
             if (IsValid)
             {
+
                 var sum = double.Parse(Summa.Text);
-               
-                Model.Receipt.Calculate(sum);
 
-                /*
-              
-                var rabattsats = 0.0;
+                var test = new Receipt(sum);
 
-                if (sum > 499 && sum < 1000)
-                {
-                    rabattsats = 0.05;
-                }
-
-                if (sum >= 999 && sum < 5000)
-                {
-                    rabattsats = 0.1;
-                }
-
-                if (sum >= 5000)
-                {
-                    rabattsats = 0.1;
-                }
-
-                var rabatt = Convert.ToInt32(sum * rabattsats);
-
-                Totalt.Text = String.Format("{0,10}{1,10:c}", "Totalt:", sum);
-                Rabatt.Text += String.Format("{0,10}{1,10}%", "Rabatt:", rabatt);
-                Slutsumma.Text += String.Format("{0,10}{1,10:c}", "Att betala:", (sum - rabatt)); */
+                test.Calculate(sum); //kommer baraåt om de inte är static!
+                
+                Outputkvitto.Visible =true;
+                Totalt.Text = String.Format("{0,10}{1,10:c}", "Totalt:", test.Subtotal);
+                Rabattsats.Text = String.Format("{0,10}{1,10}%", "Rabattsats:", test.DiscountRate*100);
+                Rabatt.Text += String.Format("{0,10}{1,10:c}", "Rabatt:", test.MoneyOff);
+                Slutsumma.Text += String.Format("{0,10}{1,10:c}", "Att betala:", (sum - test.MoneyOff));
             }
         }
     }

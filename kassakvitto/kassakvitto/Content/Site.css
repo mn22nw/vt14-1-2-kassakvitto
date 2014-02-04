@@ -5,6 +5,10 @@
 h1 {
     font-size:2.5em;
 }
+.error {
+    color:red;
+    margin-left:5px;
+}
 span { 
     display:block;
     line-height:35px;
